@@ -42,8 +42,8 @@ const Header = () => {
                 </div>
                 <div className="navbar-end">
                     {
-                        user?.email ? <>
-                            <span>{user.email}</span>
+                        user?.uid ? <>
+                            <Link><img src={user?.photoURL} className="w-10 h-10 rounded-full" alt="stve" title={user?.displayName} /></Link>
                             <Link className="btn ml-2" onClick={handleLogOut}>Logout</Link>
                         </> : <Link to="/login" className="btn">Login</Link>
                     }

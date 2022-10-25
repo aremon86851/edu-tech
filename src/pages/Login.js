@@ -1,9 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider/AuthProvider';
+import { FaGoogle, FaGithub } from 'react-icons/fa';
 
 const Login = () => {
-    const { signInWithEmail, forgetPassword } = useContext(AuthContext)
+    const { signInWithEmail, forgetPassword, logInWithGoogle } = useContext(AuthContext)
     const [userEmail, setUserEmail] = useState()
 
     const handleSignInWithEmail = event => {
@@ -37,6 +38,17 @@ const Login = () => {
                 console.error(error)
             })
     }
+
+    const handleGoogleLogIn = () => {
+        logInWithGoogle()
+            .then(result => {
+                const user = result.user
+                console.log(user)
+            }).catch(error => {
+                console.error(error)
+            })
+    }
+
     return (
         <div>
             <div className="hero min-h-screen bg-base-200">
@@ -60,6 +72,11 @@ const Login = () => {
                                 <label className="label">
                                     <p>Create an account? <Link to='/register' className='link link-hover underline decoration-solid'>Register Now</Link></p>
                                 </label>
+                            </div>
+                            <div>
+                                <button onClick={handleGoogleLogIn} className='btn btn-primary mr-2'><FaGoogle className='text-xl' /></button>
+                                <span>Or</span>
+                                <button className='btn ml-2'><FaGithub className='text-xl' /></button>
                             </div>
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Login</button>
