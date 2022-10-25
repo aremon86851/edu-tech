@@ -25,7 +25,18 @@ const Login = () => {
         setUserEmail(email)
     }
 
-
+    const handleForgetPassword = () => {
+        if (!userEmail) {
+            alert('Please Enter your email')
+            return
+        }
+        forgetPassword(userEmail)
+            .then(() => {
+                alert('Please Check your email')
+            }).catch(error => {
+                console.error(error)
+            })
+    }
     return (
         <div>
             <div className="hero min-h-screen bg-base-200">
@@ -44,7 +55,7 @@ const Login = () => {
                                 </label>
                                 <input type="password" name='password' placeholder="password" className="input input-bordered" required />
                                 <label className="label">
-                                    <Link className="label-text-alt link link-hover">Forgot password?</Link>
+                                    <Link onClick={handleForgetPassword} className="label-text-alt link link-hover">Forgot password?</Link>
                                 </label>
                                 <label className="label">
                                     <p>Create an account? <Link to='/register' className='link link-hover underline decoration-solid'>Register Now</Link></p>
