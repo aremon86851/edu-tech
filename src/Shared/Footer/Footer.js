@@ -7,7 +7,6 @@ import FooterThird from '../../component/FooterThird/FooterThird';
 
 const Footer = () => {
     const courses = useLoaderData()
-    console.log(courses)
     return (
         <div className='mt-28 px-20 bg-black py-10 shadow-2xl'>
             <div className='grid grid-cols-4 gap-5'>

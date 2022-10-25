@@ -7,7 +7,7 @@ const Courses = () => {
     const courses = useLoaderData()
     return (
         <div className='mx-5'>
-            <div className='grid grid-cols-3 my-5 gap-4'>
+            <div className='grid grid-cols-3 my-5 gap-8'>
                 <div className='col-span-2'>
                     <div className='grid grid-cols-3 gap-5'>
                         {
