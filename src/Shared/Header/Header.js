@@ -1,6 +1,6 @@
 import React from 'react';
 import { useContext } from 'react';
-import { FaLaptopCode } from 'react-icons/fa';
+import { FaLaptopCode, FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
@@ -41,11 +41,25 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
+                    <Link>
+                        {
+                            user?.photoURL ? <>
+
+                                <Link>
+                                    <img src={user?.photoURL}
+                                        className="w-10 h-10 rounded-full"
+                                        alt=''
+                                        title={user?.displayName} />
+                                </Link>
+                            </> : <FaUser className='mr-2' />
+                        }
+                    </Link>
                     {
                         user?.uid ? <>
-                            <Link><img src={user?.photoURL} className="w-10 h-10 rounded-full" alt="stve" title={user?.displayName} /></Link>
                             <Link className="btn ml-2" onClick={handleLogOut}>Logout</Link>
-                        </> : <Link to="/login" className="btn">Login</Link>
+                        </> : <>
+                            <Link to="/login" className="btn">Login</Link>
+                        </>
                     }
                 </div>
             </div>
