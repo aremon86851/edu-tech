@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Banner from '../../component/Banner/Banner';
+import Test from '../../component/Test/Test';
 import CardCourse from '../../Shared/CardCourse/CardCourse';
 
 const Home = () => {
@@ -16,6 +17,9 @@ const Home = () => {
                         courses.map(course => <CardCourse key={course.id} course={course}></CardCourse>)
                     }
                 </div>
+            </div>
+            <div className="my-10">
+                {/* <Test></Test> */}
             </div>
         </div>
     );
