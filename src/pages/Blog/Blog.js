@@ -2,7 +2,7 @@ import React from 'react';
 
 const Blog = () => {
     return (
-        <div className='w-2/4 mx-auto my-10 text-left '>
+        <div className='lg:w-2/4 md:w-3/4 w-11/12 mx-auto my-10 text-left '>
             <div>
                 <h2 className='text-white text-2xl my-2'><span className='font-bold'>1. Questions : </span><span className='italic'>What is cors ?</span></h2>
                 <p><span className='font-bold'>Answer : </span><span className='text-gray-300 italic'>The full meaning of cors = <span className='italic font-bold'>Cross-origin resource sharing.</span> Cross-origin resource sharing is a mechanism that allows restricted resources on a web page to be requested from another domain outside the domain from which the first resource was served. A web page may freely embed cross-origin images, stylesheets, scripts, iframes, and videos.<br /> ALso We are using cors in this website server side. When we don't use cors the not given to permission us to access server data that's why we are using cors. <br /></span></p>

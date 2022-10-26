@@ -4,7 +4,6 @@ import app from '../firebase.init';
 import { createContext } from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
 
 export const AuthContext = createContext()
 

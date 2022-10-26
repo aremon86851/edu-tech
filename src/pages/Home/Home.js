@@ -1,7 +1,6 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Banner from '../../component/Banner/Banner';
-import Test from '../../component/Test/Test';
 import CardCourse from '../../Shared/CardCourse/CardCourse';
 
 const Home = () => {
@@ -12,14 +11,11 @@ const Home = () => {
 
             <div>
                 <h2 className='text-5xl font-semibold text-white my-10 mt-16'>Our Courses</h2>
-                <div className=' grid grid-cols-3 gap-5 m-5 mx-52'>
+                <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 m-5 lg:mx-52'>
                     {
                         courses.map(course => <CardCourse key={course.id} course={course}></CardCourse>)
                     }
                 </div>
-            </div>
-            <div className="my-10">
-                {/* <Test></Test> */}
             </div>
         </div>
     );

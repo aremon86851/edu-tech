@@ -2,13 +2,10 @@ import React from 'react';
 import Pdf from "react-to-pdf";
 import { Link, useLoaderData } from 'react-router-dom';
 import { FaDownload, FaCrown } from 'react-icons/fa';
-import { useContext } from 'react';
-import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 
 const DetailsCourse = () => {
     const { id, details, needed, picture, title } = useLoaderData()
-    console.log(details)
     const ref = React.createRef();
     return (
         <div>
@@ -34,7 +31,7 @@ const DetailsCourse = () => {
                             <h2 className='text-2xl text-left mt-5 mb-2 text-white '>Requirement thing:</h2>
                             <p className='text-left ml-5'>
                                 {
-                                    needed.map(need => <li className='mb-3'><span className='bg-gray-600 text-white py-1 px-3 rounded-xl'>{need}</span></li>)
+                                    needed.map((need, idx) => <li className='mb-3' key={idx}><span className='bg-gray-600 text-white py-1 px-3 rounded-xl'>{need}</span></li>)
                                 }
                             </p>
                         </div>

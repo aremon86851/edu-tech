@@ -32,6 +32,15 @@ const Header = () => {
                             <li><Link to='/FAQ'>FAQ</Link></li>
                             <li><Link to='/blog'>Blog</Link></li>
                             <li><a>Dark or Light</a></li>
+                            <li className='block md:hidden'>
+                                {
+                                    user?.uid ? <>
+                                        <Link className="btn ml-2" onClick={handleLogOut}>Logout</Link>
+                                    </> : <>
+                                        <Link to="/login" className="btn">Login</Link>
+                                    </>
+                                }
+                            </li>
                         </ul>
                     </div>
                     <Link to="/" className="btn btn-ghost normal-case text-2xl"><FaLaptopCode className='text-4xl mr-1 text-orange-500' /> <span className='text-orange-500 '>Edu</span><span className='py-1 ml-2 rounded-lg  px-3 bg-orange-500 text-white'>Tech</span></Link>
@@ -66,13 +75,15 @@ const Header = () => {
                             </> : <FaUser className='mr-2' />
                         }
                     </Link>
-                    {
-                        user?.uid ? <>
-                            <Link className="btn ml-2" onClick={handleLogOut}>Logout</Link>
-                        </> : <>
-                            <Link to="/login" className="btn">Login</Link>
-                        </>
-                    }
+                    <li className='hidden md:block'>
+                        {
+                            user?.uid ? <>
+                                <Link className="btn ml-2" onClick={handleLogOut}>Logout</Link>
+                            </> : <>
+                                <Link to="/login" className="btn">Login</Link>
+                            </>
+                        }
+                    </li>
                 </div>
             </div>
         </div>
