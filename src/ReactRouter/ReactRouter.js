@@ -9,10 +9,12 @@ import DetailsCourse from "../pages/DetailsCourse/DetailsCourse";
 import Register from "../pages/Register/Register";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import CheckOut from "../pages/CheckOut/CheckOut";
+import NotAvailableRoute from "../pages/NotAvailableRoute/NotAvailableRoute";
 
 export const router = createBrowserRouter([
     {
         path: '/',
+        errorElement: <NotAvailableRoute></NotAvailableRoute>,
         loader: () => fetch('http://localhost:5000/courses'),
         element: <Main></Main>,
         children: [
@@ -51,6 +53,10 @@ export const router = createBrowserRouter([
                 path: '/checkout/:id',
                 loader: ({ params }) => fetch(`http://localhost:5000/checkout/${params.id}`),
                 element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>
+            },
+            {
+                path: '*',
+                element: <NotAvailableRoute></NotAvailableRoute>
             }
         ]
     }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import { useContext } from 'react';
 import { FaLaptopCode, FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
@@ -6,12 +7,16 @@ import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
+    const [clicked, setClicked] = useState(true)
     const handleLogOut = () => {
         logOut()
             .then(() => { })
             .catch(error => {
                 console.error(error)
             })
+    }
+    const handleChecked = event => {
+        setClicked(event.target.checked)
     }
     return (
         <div className='mx-2'>
@@ -37,7 +42,14 @@ const Header = () => {
                         <li><Link to='/courses'>Courses</Link></li>
                         <li><Link to='/FAQ'>FAQ</Link></li>
                         <li><Link to='/blog'>Blog</Link></li>
-                        <li><a>Dark or Light</a></li>
+                        <p className='flex items-center'>
+                            <label className='flex items-center'>
+                                <input onClick={handleChecked} className="mr-2 toggle toggle-primary" type='checkbox' defaultChecked />
+                                {
+                                    clicked ? "Dark" : 'White'
+                                }
+                            </label>
+                        </p>
                     </ul>
                 </div>
                 <div className="navbar-end">
