@@ -1,11 +1,14 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { AuthContext } from '../AuthProvider/AuthProvider';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
 
 const Login = () => {
     const { signInWithEmail, forgetPassword, logInWithGoogle, logInWithGithub } = useContext(AuthContext)
     const [userEmail, setUserEmail] = useState()
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/'
 
     const handleSignInWithEmail = event => {
         event.preventDefault()
@@ -16,6 +19,8 @@ const Login = () => {
             .then(result => {
                 const user = result.user
                 console.log(user)
+                form.reset()
+                navigate(from, { replace: true })
             }).catch(error => {
                 console.error(error)
             })
@@ -44,6 +49,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user
                 console.log(user)
+                navigate(from, { replace: true })
             }).catch(error => {
                 console.error(error)
             })
@@ -53,6 +59,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user
                 console.log(user)
+                navigate(from, { replace: true })
             }).catch(error => console.error(error))
     }
     return (

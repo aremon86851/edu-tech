@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { FaDownload, FaCrown } from 'react-icons/fa';
 
 const DetailsCourse = () => {
@@ -21,7 +21,7 @@ const DetailsCourse = () => {
                 </div>
             </div>
             <div className='mt-10'>
-                <button className="btn btn-warning"> <span className='mr-2'><FaCrown className='text-xl' /></span> Get premium access</button>
+                <Link to={`/checkout/${id}`}><button className="btn btn-warning"> <span className='mr-2'><FaCrown className='text-xl' /></span> Get premium access</button></Link>
             </div>
         </div>
     );
