@@ -15,22 +15,22 @@ export const router = createBrowserRouter([
     {
         path: '/',
         errorElement: <NotAvailableRoute></NotAvailableRoute>,
-        loader: () => fetch('http://localhost:5000/courses'),
+        loader: () => fetch('https://assignment-10-server-kohl-one.vercel.app/courses'),
         element: <Main></Main>,
         children: [
             {
                 path: '/',
-                loader: () => fetch('http://localhost:5000/courses'),
+                loader: () => fetch('https://assignment-10-server-kohl-one.vercel.app/courses'),
                 element: <Home></Home>
             },
             {
                 path: '/courses',
-                loader: () => fetch('http://localhost:5000/courses'),
+                loader: () => fetch('https://assignment-10-server-kohl-one.vercel.app/courses'),
                 element: <Courses></Courses>
             },
             {
                 path: '/courses/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`),
+                loader: ({ params }) => fetch(`https://assignment-10-server-kohl-one.vercel.app/courses/${params.id}`),
                 element: <DetailsCourse></DetailsCourse>
             },
             {
@@ -51,7 +51,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/checkout/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/checkout/${params.id}`),
+                loader: ({ params }) => fetch(`https://assignment-10-server-kohl-one.vercel.app/checkout/${params.id}`),
                 element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>
             },
             {

@@ -15,7 +15,7 @@ const Courses = () => {
                         }
                     </div>
                 </div>
-                <div>
+                <div className='col-span-2 lg:col-auto'>
                     <h2 className='text-center text-3xl text-white font-semibold mb-5'>Related Course</h2>
                     {
                         courses.map(course => <CoursesSidebar key={course.id} course={course}></CoursesSidebar>)

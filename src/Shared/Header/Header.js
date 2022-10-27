@@ -7,7 +7,7 @@ import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
-    const [clicked, setClicked] = useState(true)
+    const [clickeds, setClickeds] = useState(true)
     const handleLogOut = () => {
         logOut()
             .then(() => { })
@@ -15,8 +15,11 @@ const Header = () => {
                 console.error(error)
             })
     }
-    const handleChecked = event => {
-        setClicked(event.target.checked)
+    const handleClickDark = () => {
+        setClickeds(true)
+    }
+    const handleClickLight = () => {
+        setClickeds(false)
     }
     return (
         <div className='mx-2'>
@@ -31,7 +34,24 @@ const Header = () => {
                             <li><Link to='/courses'>Courses</Link></li>
                             <li><Link to='/FAQ'>FAQ</Link></li>
                             <li><Link to='/blog'>Blog</Link></li>
-                            <li><a>Dark or Light</a></li>
+                            <li className='bg-gray-700 rounded-xl text-white'>
+                                {!clickeds ? <button onClick={handleClickDark}>Dark Theme</button> : <button onClick={handleClickLight}>Light Theme</button>}
+                            </li>
+                            <li>
+                                <Link className='userProfileCustomize my-2 flex justify-center'>
+                                    {
+                                        user?.photoURL ? <>
+
+                                            <Link>
+                                                <img src={user?.photoURL}
+                                                    className="w-10 h-10 rounded-full"
+                                                    alt=''
+                                                    title={user?.displayName} />
+                                            </Link>
+                                        </> : <FaUser className='mr-2' />
+                                    }
+                                </Link>
+                            </li>
                             <li className='block md:hidden'>
                                 {
                                     user?.uid ? <>
@@ -50,19 +70,14 @@ const Header = () => {
                         <li><Link to='/'>Home</Link></li>
                         <li><Link to='/courses'>Courses</Link></li>
                         <li><Link to='/FAQ'>FAQ</Link></li>
-                        <li><Link to='/blog'>Blog</Link></li>
-                        <p className='flex items-center'>
-                            <label className='flex items-center'>
-                                <input onClick={handleChecked} className="mr-2 toggle toggle-primary" type='checkbox' defaultChecked />
-                                {
-                                    clicked ? "Dark" : 'White'
-                                }
-                            </label>
-                        </p>
+                        <li><Link to='/blog'>Blogs</Link></li>
+                        <li className='bg-gray-700 rounded-xl text-white'>
+                            {!clickeds ? <button onClick={handleClickDark}>Dark Theme</button> : <button onClick={handleClickLight}>Light Theme</button>}
+                        </li>
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link>
+                    <Link className='max-[300px]:hidden'>
                         {
                             user?.photoURL ? <>
 
@@ -86,7 +101,7 @@ const Header = () => {
                     </li>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 
