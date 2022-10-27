@@ -5,6 +5,7 @@ import { FaGoogle, FaGithub } from 'react-icons/fa';
 
 const Login = () => {
     const { signInWithEmail, forgetPassword, logInWithGoogle, logInWithGithub } = useContext(AuthContext)
+    const [error, setError] = useState()
     const [userEmail, setUserEmail] = useState()
     const navigate = useNavigate()
     const location = useLocation()
@@ -22,7 +23,7 @@ const Login = () => {
                 form.reset()
                 navigate(from, { replace: true })
             }).catch(error => {
-                console.error(error)
+                setError(error.message)
             })
     }
 
@@ -62,7 +63,7 @@ const Login = () => {
     }
     return (
         <div>
-            <div className="hero min-h-screen bg-base-200">
+            <div className="hero min-h-screen">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <form onSubmit={handleSignInWithEmail} className="card-body">
@@ -77,6 +78,13 @@ const Login = () => {
                                     <span className="label-text">Password</span>
                                 </label>
                                 <input type="password" name='password' placeholder="password" className="input input-bordered" required />
+                                <label className="label">
+                                    <Link>
+                                        {
+                                            error && <p className='text-red-400'>{error}</p>
+                                        }
+                                    </Link>
+                                </label>
                                 <label className="label">
                                     <Link onClick={handleForgetPassword} className="label-text-alt link link-hover">Forgot password?</Link>
                                 </label>
